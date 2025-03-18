@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import "easyinspection-mask";
 
 const App = () => {
-  const [mask, setMask] = useState("car-sedan");
+  const [mask, setMask] = useState("none");
+  const [maskWidth, setMaskWidth] = useState("90%");
   const videoRef = useRef(null);
   const [stream, setStream] = useState(null);
 
@@ -50,6 +51,19 @@ const App = () => {
         <option value="truck-side-right">truck-side-right</option>
       </select>
 
+      <br />
+      <br />
+
+      <label>
+        Ajustar largura da máscara (%):
+        <input
+          type="number"
+          value={parseInt(maskWidth)}
+          onChange={(e) => setMaskWidth(`${e.target.value}%`)}
+          style={{ marginLeft: "10px", width: "60px" }}
+        />
+      </label>
+
       <div
         style={{
           position: "relative",
@@ -60,7 +74,7 @@ const App = () => {
         }}
       >
         {/* Máscara do Web Component */}
-        <svg-mask maskName={mask} width="90%">
+        <svg-mask maskName={mask} width={maskWidth}>
           {/* Câmera */}
           <video
             ref={videoRef}
