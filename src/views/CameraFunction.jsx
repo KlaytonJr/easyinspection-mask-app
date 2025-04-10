@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { captureFullscreenPhoto } from "easyinspection-mask";
 
-function PhotoCaptureButton() {
+function CameraFunction() {
   const [mask, setMask] = useState("none");
   const [capturedImage, setCapturedImage] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -71,4 +71,4 @@ function PhotoCaptureButton() {
   );
 }
 
-export default PhotoCaptureButton;
+export default CameraFunction;
